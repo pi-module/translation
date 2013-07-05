@@ -1,0 +1,494 @@
+body {
+    font: 12px/1.5 Arial,Helvetica,\5b8b\4f53,sans-serif;
+    background-color: #f5f5f5;
+    color: #4c4c4c;
+}
+form {
+    margin-bottom: -20px;
+}
+select {
+    height: 33px;
+    outline: 0 !important;
+}
+:focus {
+    outline: 0 !important;
+}
+::-webkit-input-placeholder {
+    font-size: 12px;
+}
+::-moz-placeholder {
+    font-size: 12px;
+}
+input:-moz-placeholder {
+    font-size: 12px;
+}
+textarea {
+    resize: none;
+    outline: 0;
+    box-shadow: none;
+    width: 258px;
+    padding: 4px 6px;
+}
+textarea:focus {
+    box-shadow: none;
+    padding: 4px 6px;
+}
+textarea.focus {
+    border: 1px solid #ccc !important;
+}
+button,
+input {
+    *overflow: visible;
+    line-height: normal;
+    outline: 0;
+    box-shadow: none;
+}
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.inline {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+}
+.form-horizontal .control-label {
+    padding-top: 7px \9;
+    *padding-top: 8px;
+}
+.reg-form .controls select {
+    *margin-top: 6px;
+}
+.dashed {
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    border-top: 1px dashed #d6d6d6;
+    margin: 12px 0 !important;
+}
+.btn-primary {
+    *border: none;
+    outline: 0;
+    padding: 9px 18px 7px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    *padding: 6px 18px 4px !important;
+    _margin-left: 0;
+}
+.reg-logo {
+    position: relative;
+    height: 96px;
+    width: 263px;
+    overflow: hidden;
+    background: url(../image/reg-logo.png) no-repeat;
+}
+.reg-logo-left {
+    position: absolute;
+    top: 0;
+    height: 96px;
+    width: 180px;
+    left: 0;
+}
+.reg-logo-right {
+    position: absolute;
+    top: 0;
+    height: 96px;
+    width: 70px;
+    right: 0;
+}
+.login {
+    margin-top: 64px;
+    font-size: 12px;
+    line-height: 24px;
+}
+.step {
+    font: 18px/24px "Microsoft yahei","微软雅黑";
+}
+.step1 {
+    background: url(../image/step1.png) no-repeat;
+}
+.step2 {
+    background: url(../image/step2.png) no-repeat;
+}
+.step3 {
+    background: url(../image/step3.png) no-repeat;
+}
+.step .nav {
+    margin-bottom: 0;
+    position: relative;
+    z-index: -1;
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+}
+.step li {
+    float: left;
+    padding-left: 40px;
+    width: 197px;
+    height: 43px;
+    line-height: 43px;
+    color: #808080;
+}
+.step .current {
+    color: #fff;
+    background-color: #3780b8;
+}
+.register {
+    border: 1px solid #ccc;
+    border-top: 0;
+}
+.reg-form input {
+    width: 258px;
+    padding: 6px;
+    _padding: 7px;
+}
+.reg-form select {
+    padding: 4px;
+}
+.reg-form .checkbox input {
+    width: auto;
+}
+.reg-form {
+    border-right: 1px solid #ccc;
+    margin-left: -8px;
+    _padding-right: 14px;
+}
+.reg-form .control-label {
+    width: 115px;
+}
+.reg-form .controls {
+    margin-left: 123px;
+    *display: inline-block;
+    *padding-left: 8px;
+    *margin-left: 0 !important;
+}
+.reg-form input:focus,
+.reg-form input:active {
+    outline: 0;
+    box-shadow: none;
+    border: 1px solid #085a99;
+}
+.reg-form .checkbox input.focus,
+.reg-form .checkbox input:focus,
+.reg-form .checkbox input:active {
+    border: none;
+}
+.reg-form  span {
+    color: #468847;
+    display: inline-block;
+    vertical-align: middle;
+}
+.reg-form .focus {
+    border: 1px solid #085a99;
+    _padding: 8px;
+}
+.reg-form  input.error {
+    color: #b94a48;
+    border: 1px solid #b94a48;
+    _padding: 8px;
+}
+.reg-form  textarea.error {
+    border: 1px solid #b94a48;
+}
+.reg-form span ul,
+.reg-form span li {
+    margin: 0;
+    padding: 0;
+}
+.reg-form span ul,
+.reg-form span li {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    list-style: none;
+}
+.reg-form span li {
+    margin-left: 12px;
+    padding-left: 28px;
+    background: url(../image/succ-erro.png) no-repeat 0 -101px;
+    color: #b94a48;
+    font-size: 12px;
+}
+.reg-form span.succ li {
+    color: #468847;
+    background: url(../image/succ-erro.png) no-repeat 0 1px;
+}
+.reg-about {
+    padding-right: 20px;
+    font-family: Arial,\5b8b\4f53;
+}
+.content .row {
+    background-color: #fff;
+    margin-left: 0;
+    padding-top: 45px;
+    padding-bottom: 60px;
+    overflow: hidden;
+}
+.sidbar {
+    margin-left: 0;
+    padding-left: 30px;
+    color: #b2b2b2;
+}
+.sidbar dl {
+    margin-top: 0;
+}
+.sidbar dt {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+.sidbar dd {
+    margin: 0;
+    white-space: nowrap;
+}
+.agreement {
+    padding-left: 4px;
+    color: #085a99;
+}
+.about-mail {
+    padding-left: 58px;
+    font-size: 14px;
+}
+.about-mail .mail-addtress {
+    color: #d70c1e;
+    margin: 0 10px;
+}
+.about-mail p {
+    margin-bottom: 30px;
+}
+.about-mail li {
+    line-height: 28px;
+}
+.about-mail .resend-mail {
+    margin-left: 8px;
+    width: auto;
+    padding: 6px 14px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}
+.reg-mail {
+    margin-top: 0;
+}
+.reg-mail .regist {
+    margin-left: 10px;
+}
+.reg-mail dt {
+    color: #4c4c4c;
+    margin-bottom: 10px;
+}
+.reg-mail dd {
+    color: #808080;
+    line-height: 25px;
+}
+.captcha img,
+.captcha input,
+.captcha span {
+    position: relative;
+}
+.captcha img {
+    top: 44px;
+    width: 150px;
+    height: 50px;
+}
+.captcha input,
+.captcha span {
+    top: -50px;
+}
+.alert i {
+    display: inline-block;
+    margin: 0 15px 0 0;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    vertical-align: middle;
+    background: url(../image/alert-succ-erro.png) no-repeat;
+}
+.alert-success i {
+    background-position: 0 2px;
+}
+.alert-error i {
+    background-position: 0 -34px;
+}
+.ie6iframe {
+    background: none repeat scroll 0 0 #fff;
+    position: absolute;
+    z-index: -1;
+    left: -2px;
+    top: -2px;
+    width: 580px;
+    height: 280px;
+    display: none;
+    filter: alpha(opacity=0);
+}
+/* change email */
+.header-links {
+    margin-top: 64px;
+    font-size: 12px;
+    line-height: 24px;
+}
+.header-links a {
+    color: #4c4c4c;
+}
+.header-links a:hover {
+    color: #085a99;
+}
+.divider {
+    margin: 0 4px;
+    font-family: serif,sans-serif;
+    color: #ccc;
+}
+.step-change-email li {
+    padding-left: 50px;
+    width: 266px;
+}
+.step1-change-email,
+.step2-change-email,
+.step3-change-email,
+.step-error-change-email {
+    background: url(../image/change-email-step.png) no-repeat;
+}
+.step1-change-email {
+    background-position: 0 0;
+}
+.step2-change-email {
+    background-position: 0 -50px;
+}
+.step3-change-email {
+    background-position: 0 -100px;
+}
+.step-error-change-email {
+    background-position: 0 -150px;
+}
+.main-change-email {
+    border: 1px solid #ccc;
+    border-top: 0;
+}
+.main-change-email .captcha {
+    height: 96px;
+}
+.main-change-email .row {
+    background-color: #fff;
+    margin-left: 0;
+    padding-top: 50px;
+    padding-bottom: 42px;
+}
+.main-change-email .reg-form {
+    border-right: none;
+    /*_padding-right: 13px;*/
+}
+.main-change-email .reg-form form {
+    /*padding-bottom: 75px;*/
+    padding-bottom: 63px;
+
+}
+.main-change-email .sidbar {
+    border-left: 1px solid #ccc;
+    min-height: 212px;
+    _height: 212px;
+    padding-left: 20px;
+}
+.sidbar .countdown-wrap {
+    margin-top: -2px;
+}
+.countdown-wrap .resend-url {
+    display: inline-block;
+    margin-left: 4px;
+    _vertical-align: 2px;
+}
+.countdown-wrap .disabled {
+    /*opacity: .5;
+    filter: alpha(opacity=50);*/
+    cursor: not-allowed;
+}
+.countdown-wrap .disabled:hover {
+    text-decoration: none;
+}
+.countdown {
+    position: absolute;
+    color: #085a99;
+}
+.main-change-email .dl-horizontal {
+    margin: 0;
+    font-size: 14px;
+}
+.main-change-email .dl-horizontal dt {
+    width: 113px;
+    font-weight: normal;
+    margin-bottom: 34px;
+}
+.main-change-email .dl-horizontal dd {
+    margin-left: 134px;
+    margin-bottom: 34px;
+}
+.main-change-email .btn-primary {
+    padding: 9px 33px 7px;
+    *padding: 6px 33px 4px !important;
+}
+.main-change-email .reg-mail dt {
+    color: #b2b2b2;
+    line-height: 1;
+    margin-bottom: 13px;
+}
+.main-change-email .reg-mail dd {
+    color: #b2b2b2;
+    line-height: 21px;
+}
+.main-change-email-msg {
+    margin-left: 8px;
+    margin-top: -5px;
+    _margin-top: -4px;
+    padding-left: 50px;
+    font-size: 14px;
+    line-height: 24px;
+}
+.main-change-email-msg .email {
+    margin: 0 7px;
+    color: #b94a48;
+}
+.main-change-email-inner {
+    background-color: #fff;
+    padding: 74px 0;
+    text-align: center;
+    min-height: 155px;
+    _height: 155px;
+}
+.main-change-email-stat {
+    margin-left: -46px;
+    margin-left: 0\0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    text-align: left;
+    _padding-left: 340px;
+}
+.main-change-email-stat-txt {
+    margin-left: 65px;
+    overflow: hidden;
+    *zoom: 1;
+    font-size: 14px;
+    font-family: simsun;
+}
+.main-change-email-stat-succ,
+.main-change-email-stat-erro {
+    margin-top: 8px;
+    font-size: 18px;
+}
+.main-change-email-stat-succ {
+    margin-bottom: 23px;
+    color: #468847;
+}
+.main-change-email-stat-erro {
+    margin-bottom: 13px;
+    color: #b94a48;
+}
+.main-change-email .captcha input {
+    width: 188px;
+}

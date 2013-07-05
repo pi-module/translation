@@ -1,0 +1,18 @@
+Translation module changelog
+
+Jun 27th, 2013
+=============================
+1. Add select file tree.
+2. Add mode check function.
+
+Jun 24th, 2013
+=============================
+1. Add download features.
+2. Fix zip file bug
+
+Jun 7th, 2013
+=============================
+1. Create module to version 1.0.0-beta.1
+
+
+Liu Chuang

@@ -1,0 +1,284 @@
+<?php
+$this->css(array(
+    $this->assetModule('css/translation.css')
+));
+$this->jQuery();
+
+$this->css($this->assetModule('css/zTreeStyle.css'));
+$this->js($this->assetModule('script/jquery.ztree.core-3.5.js'));
+$this->js($this->assetModule('script/jquery.ztree.excheck-3.5.js'));
+?>
+<style>
+    textarea {
+        resize:  both;
+        width: 250px;
+    }
+</style>
+<div class="span12">
+    <?php if ($modeError) { ?>
+        <div class="alert alert-info">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            <?php
+            _e('Error source path or mode, please select correct.');
+            ?>
+        </div>
+
+    <?php } ?>
+    <?php $form->setAttribute('class', 'form-horizontal reg-form');?>
+    <?php echo $this->form()->openTag($form); ?>
+    <div class="legend"><span class="badge">1</span><span><?php _e('Set source path:');  echo '&nbsp&nbsp' . 'upload/translation/source';?></span></div>
+    <div class="control-group">
+        <?php $element = $form->get('source-path'); ?>
+        <label class="control-label"><?php _e('Source path'); ?></label>
+        <div class="controls">
+            <?php echo $this->formElement($element); ?><span></span>
+        </div>
+    </div>
+
+    <div class="legend"><span class="badge">2</span><span><?php _e('Set source directory structure'); ?></span></div>
+    <div class="control-group">
+        <?php $element = $form->get('mode'); ?>
+        <label class="control-label"><?php _e('Mode'); ?></label>
+        <div class="controls">
+            <?php echo $this->formElement($element); ?><span id="mode-msg"></span>
+        </div>
+    </div>
+
+    <div id="set-skip-path">
+        <div class="legend"><span class="badge">3</span><span><?php _e('Set skip path'); ?></span></div>
+        <div class="control-group">
+            <?php $element = $form->get('skip-path'); ?>
+            <label class="control-label"><?php _e('Skip path'); ?></label>
+            <div class="controls">
+                <?php echo $this->formElement($element); ?>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom-select-file">
+        <div class="legend"><span class="badge">3</span><span><?php _e('Select file'); ?></span></div>
+        <div class="zTreeDemoBackground">
+            <ul id="treeDemo" class="ztree"></ul>
+        </div>
+    </div>
+
+
+    <div class="legend"><span class="badge">4</span><span><?php _e('Set output path:');  echo '&nbsp&nbsp' . 'upload/translation/output/';?></span></div>
+    <div class="control-group">
+        <?php $element = $form->get('output-path'); ?>
+        <label class="control-label"><?php _e('Output path'); ?></label>
+        <div class="controls">
+                <?php echo $this->formElement($element); ?><span></span>
+        </div>
+    </div>
+
+    <div id="custom-output-file-name">
+        <div class="legend"><span class="badge">5</span><span><?php _e('Set output file name:'); ?></span></div>
+        <div class="control-group">
+            <?php $element = $form->get('output-file-name'); ?>
+            <label class="control-label"><?php _e('Output file name'); ?></label>
+            <div class="controls">
+                <?php echo $this->formElement($element); ?><span></span>
+            </div>
+        </div>
+    </div>
+
+    <?php $element = $form->get('security'); ?>
+    <?php echo $this->formElement($element); ?>
+
+    <?php $element = $form->get('checked-file'); ?>
+    <?php echo $this->formElement($element); ?>
+
+    <div class="control-group">
+        <?php $element = $form->get('process'); ?>
+        <?php $element->setAttribute('class', 'btn btn-large btn-success'); ?>
+        <label class="control-label"></label>
+        <div class="controls">
+            <?php echo $this->formElement($element); ?>
+        </div>
+    </div>
+
+    <?php if (isset($result)) { ?>
+        <div class="legend"><span class="badge">last</span><span><?php _e('Process result'); ?></span></div>
+        <div class="alert alert-info">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            <?php
+            foreach ($resultList as $file) {
+                echo $file . '</br>';
+            }
+            ?>
+        </div>
+        <a class="btn btn-large btn-success" href="<?php echo $this->url('admin', array('controller' => 'index', 'action' => 'download', 'path' => urlencode($output), 'filename' => $filename));?>"><?php _e('Download');?></a>
+        <a class="btn btn-large btn-success" href="<?php echo $this->url('admin', array('action' => 'index'));?>"><?php _e('Return  ');?></a>
+    <?php } ?>
+</div>
+
+
+<script>
+    $(function(){
+        $('.reg-form input').focus(function(){
+            $(this).addClass('focus').removeClass('error').next('span').removeClass('error').html('');
+        }).blur(function(){
+                    $(this).removeClass('focus');
+                });
+
+        function showSucc (self, tip){
+            self.next('span').addClass('succ').html( '<ul><li>' + (tip == null ? '&nbsp;' : tip) + '</li></ul>' );
+        }
+
+        function showErro (self, tip){
+            self.addClass('error').next('span').removeClass().html( '<ul><li>' + (tip == null ? '' : tip) + '</li></ul>' );
+        }
+
+        function initTree(path) {
+            var setting = {
+                check: {
+                    enable: true
+                },
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                },
+                callback: {
+                    onCheck: function(){
+                        (function(){
+                            var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+                                    res = [];
+                            checkedNodesName = '';
+                            nodes = zTree.getCheckedNodes();
+
+                            function getNodePath(node, pathArray){
+                                pathArray.push(node.name);
+                                if(node.parentTId) {
+                                    pathArray.push('/')
+                                    return getNodePath(node.getParentNode(), pathArray)
+                                }
+                                return pathArray.reverse().join('');
+                            }
+
+                            $.each(nodes, function(){
+                                if(!this.isParent) {
+                                    var pathArray = [];
+                                    var path = getNodePath(this, pathArray);
+                                    res.push(path);
+                                }
+                            });
+
+                            checkedNodesName = res.join(',');
+                            $('[name="checked-file"]').val(checkedNodesName);
+                        })();
+                    }
+                }
+            };
+
+            var zNodes;
+
+            $.get("/admin/translation/ajax/get.tree/path/" + encodeURIComponent(path), function(data){
+                var node = $.parseJSON(data);
+                console.log(node);
+                zNodes = node;
+                $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            });
+        }
+
+        $('.radio input').slice(0, 3).change(function(){
+            $('#set-skip-path').fadeIn();
+            $('#custom-select-file').fadeOut();
+            $('#custom-output-file-name').fadeOut();
+            var self = $(this),
+                    val = $.trim(self.val()),
+                    source = $('[name="source-path"]').val();
+
+            if (val != 'custom') {
+                $.get("/admin/translation/index/check.path.structure/" + '?source='  + encodeURIComponent(source) + '&mode=' + val, function(data){
+                    var valid = $.parseJSON(data).valid;
+                    if (valid == false) {
+                        alert('Please select correct mode');
+                    }
+                });
+            }
+
+            $.getJSON("/admin/translation/ajax/get.skip.path/mode/" + encodeURIComponent(val), function(data){
+                var path = data.skip;
+                console.log(data);
+                $('[name="skip-path"]').val(path);
+            });
+        });
+
+        $('.radio input').last().change(function(){
+            var val = $('[name="source-path"]').val();
+            initTree(val);
+            $('#set-skip-path').fadeOut();
+            $('#custom-output-file-name').fadeIn();
+            $('#custom-select-file').fadeIn();
+        });
+
+        $('[name="source-path"]').blur(function(e, isAsync){
+            var self = $(this),
+                    val = $.trim( self.val() ),
+                    tip;
+            self.val(val);
+            switch ( true ) {
+                case val == '':
+                    tip = "Please input source path";
+                    break;
+                default:
+                    $.ajax({
+                        url: "/admin/translation/ajax/check.source.path/path/" + encodeURIComponent(val),
+                        async: isAsync === false ? false : true
+                    }).success(function(data){
+                                var valid = $.parseJSON(data).valid;
+                                switch (true) {
+                                    case valid == 1:
+                                        tip = 'Path is valid';
+                                        showSucc(self, tip);
+                                        break;
+                                    case valid == 2:
+                                        tip = 'No path exists';
+                                        showErro(self, tip);
+                                        break;
+                                    case valid == 3:
+                                        tip = 'Path is empty';
+                                        showErro(self, tip);
+                                        break;
+                                }
+                            });
+                    return;
+            }
+            showErro(self, tip);
+        });
+
+        $('[name="output-path"]').blur(function(e, isAsync){
+            var self = $(this),
+                    val = $.trim( self.val() ),
+                    tip;
+            self.val(val);
+            $.ajax({
+                url: "/admin/translation/ajax/check.output.path/path/" + encodeURIComponent(val),
+                async: isAsync === false ? false : true
+            }).success(function(data){
+                        var valid = $.parseJSON(data).valid;
+                        if (valid) {
+                            tip = 'Output path is valid ';
+                            showSucc(self, tip);
+                        } else {
+                            tip = 'Output path is not empty';
+                            showErro(self, tip);
+                        }
+                    });
+        });
+
+        $('form').submit(function(){
+            $('[name="source-path"]').trigger('blur', [false]);
+            $('[name="output-path"]').trigger('blur', [false]);
+            if( $('.error').length > 0){
+                return false;
+            }
+            $('[type=submit]').attr('disabled', 'disabled');
+        });
+
+        $('#custom-select-file').hide();
+        $('#custom-output-file-name').hide();
+    });
+</script>
