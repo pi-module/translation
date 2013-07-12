@@ -1,10 +1,4 @@
-**Table of Contents**
-* [Module Features](#1 Module Features)
-* [Operating steps](#2 Operating steps)
-* [Translate file produce](#3 Translate file produce)
-* [Translate the web page](#4 Translate the web page)
-
-## <span id="1 Module Features">1 Module Features</span>
+## 1 Module Features</span>
 * User: Developers or translators
 * Usage: Translation module is a feature that provides you with the ability to extract variables with translation tag, translators can make csv files according to the source.
 * Module functional constitute:
@@ -17,7 +11,7 @@
  * Preview the results
  * Download file
 
-## <span id="2 Operating steps">2 Operating steps</span>
+## 2 Operating steps</span>
 **2.1 Enter the Translation Module**
  * Sign in to the admin platform
  * Select OPERATION>Translation, This will lead you to the Translation module
@@ -90,7 +84,7 @@ You can download csv files with the previously set structure by clicking the Dow
 
 ![structured directory](https://f.cloud.github.com/assets/4251179/785994/f4526b18-ea98-11e2-9e28-7127b0e7bfac.png)
 
-## <span id="3 Translate file produce">3 Translate file produce</span>
+## 3 Translate file produce</span>
 Open the generated csv file, replace row B with translated words and save the file. In this way, you produced a translate file.
 
 **Notice**
@@ -101,7 +95,7 @@ Open the generated csv file, replace row B with translated words and save the fi
 
 ![translate](https://f.cloud.github.com/assets/4251179/785995/f4532828-ea98-11e2-8942-f63cfb2ba07e.png)
 
-## <span id="4 Translate the web page">4 Translate the web page</span>
+## 4 Translate the web page</span>
 After produce a translate file, place the translate file into the correspond locale folder. For example, place the Chinese translate file in /locale/zh-cn, Engilsh file in /locale/en. The file you download already contains the correspond directory structure, you just need to create corresponding language folder and place the translate file main.csv in it, then copy it into the system directory usr.
 
 ![locale folder](https://f.cloud.github.com/assets/4251179/785985/f3dfebb0-ea98-11e2-869c-90cee4582674.png)
